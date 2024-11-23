@@ -1,0 +1,7 @@
+{
+  "name": "Delivery",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}

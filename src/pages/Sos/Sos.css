@@ -1,0 +1,27 @@
+.sos-content {
+    background-color: #fbe9e7; /* Light pink background */
+  }
+  
+  .sos-card {
+    margin-top: 20px;
+  }
+  
+  .warning-text {
+    font-size: 14px;
+    color: #d32f2f; /* Red warning text */
+    background-color: #fff3e0; /* Light warning background */
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .newsos-button {
+    width: 100%; /* Ensure buttons take the full width of the card */
+    margin: 10px 0; 
+    font-weight: bold;
+  }
+  
+  .ion-text-center {
+    text-align: center;
+  }
+  

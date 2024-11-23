@@ -1,0 +1,83 @@
+/* CommonModal.css */
+
+/* Modal Content Styling */
+.modal-content {
+    font-family: "Arial", sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Preview Details */
+  .preview-details {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .preview-details h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .preview-details h3 {
+    font-size: 1.2rem;
+    margin-top: 15px;
+    color: #555;
+  }
+  
+  .preview-details p {
+    margin-bottom: 10px;
+    color: #666;
+  }
+  
+  .preview-details ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .preview-details ul li {
+    background: #eef;
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+  }
+  
+  /* Modern Close Button */
+  .modern-close-btn {
+    font-size: 1.5rem;
+    color: #333;
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    line-height: 1;
+    padding: 5px;
+    transition: all 0.3s;
+  }
+  
+  .modern-close-btn:hover {
+    color: #ff6347;
+    transform: scale(1.2);
+  }
+  
+  /* Modal Actions */
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .modal-actions ion-button {
+    flex: 1;
+    margin: 0 5px;
+  }
+  /* Timer Styling */
+.timer {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #ff4500;
+  }
