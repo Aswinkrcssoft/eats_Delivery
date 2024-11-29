@@ -5,6 +5,7 @@ import { callOutline, locationOutline, star, chevronForwardOutline, personCircle
 import './Settings.css';
 import { checkName } from '../../components/utils/preferencesUtil';
 import { rider } from '../../components/Model/Rider';
+import Header from '../../components/Header'
 const Settings: React.FC = () => {
 
   const [avatarSrc, setAvatarSrc] = useState(''); //
@@ -96,13 +97,7 @@ const Settings: React.FC = () => {
 
   return (
     <IonPage>  {/* To Consider this content need to be inside a page */}
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle className="centered-title">Settings</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-     
-      
+     <Header title="Settings" />  
       <IonContent className="ion-padding">
         <IonCard>
           <IonCardContent>
@@ -111,7 +106,7 @@ const Settings: React.FC = () => {
               <IonRow>
                 <IonCol size="2">
                   <IonAvatar>
-                    <img src={avatarSrc}  />
+                    <img src={personCircleOutline}  />
                   </IonAvatar>
                 </IonCol>
                 <IonCol size="8">

@@ -12,12 +12,14 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle,homeOutline,settingsOutline, cardOutline,peopleOutline} from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
+
 import Payout from './pages/Payout/Payout';
 import Settings from './pages/Settings/Settings';
 import DashboardPage from './pages/DashBoard/DashboardPage'
 import Sos from './pages/Sos/Sos'
 import Login from './pages/Login/Login'
+import Tab3 from './pages/Tab3';
+import Map from './pages/routemap/GoogleMapsPage'
 
 import { useStatus,StatusProvider } from './components/context/StatusContext';
 /* Core CSS required for Ionic components to work properly */
@@ -68,11 +70,13 @@ const App: React.FC = () => {
       <IonTabs>
         <IonRouterOutlet>
           {/* Main app routes */}
-          <Route path="/DashboardPage" component={DashboardPage} exact />
-          <Route path="/Payout" component={Payout} exact />
-          <Route path="/Settings" component={Settings} exact />
-          <Route path="/Sos" component={Sos} exact />
-          <Route path="/tab1" component={Tab1} exact />
+          <Route path="/DashboardPage" component={DashboardPage}  />
+          <Route path="/Payout" component={Payout}  />
+          <Route path="/Settings" component={Settings}  />
+          <Route path="/Sos" component={Sos}  />
+          <Route path="/Tab3" component={Tab3}  />
+          <Route path="/Map" component={Map}  />
+       
           {/* Redirect to DashboardPage when logged in */}
           <Route exact path="/">
             <Redirect to="/DashboardPage" />

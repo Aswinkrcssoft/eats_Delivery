@@ -1,25 +1,15 @@
-// CommonModal.tsx
 import React, { useEffect, useState } from "react";
 import { IonModal, IonButton, IonContent, IonHeader, IonToolbar, IonTitle } from "@ionic/react";
 import "./CommonModal.css";
+import { order } from "./Model/orders";
 
-interface OrderItem {
-  name: string;
-  quantity: number;
-  price: number;
-}
 
 interface CommonModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onAccept: () => void;
-  onCancel: () => void;
-  orderDetails: {
-    restaurantName: string;
-    deliveryCommission: string;
-    paymentType: string;
-    items: OrderItem[]; // Array of items
-  };
+  onAccept: (action: string, orderId: string) => void;
+  onCancel: (action: string, orderId: string) => void;
+  orderDetails: order;
   timeLimit: number; // Time limit in seconds
 }
 
@@ -42,18 +32,14 @@ const CommonModal: React.FC<CommonModalProps> = ({
       setTimeLeft((prev) => {
         if (prev <= 1) {
           clearInterval(timer);
-          onCancel(); // Automatically cancel the order if time runs out
+          onCancel("Cancel", orderDetails?.orderId); // Automatically cancel the order if time runs out
         }
         return prev - 1;
       });
     }, 1000);
 
     return () => clearInterval(timer); // Cleanup on unmount or modal close
-  }, [isOpen, timeLimit, onCancel]);
-
-  const calculateTotalPrice = () => {
-    return orderDetails.items.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
-  };
+  }, [isOpen, timeLimit, onCancel, orderDetails?.orderId]);
 
   return (
     <IonModal isOpen={isOpen} onDidDismiss={onClose}>
@@ -68,34 +54,40 @@ const CommonModal: React.FC<CommonModalProps> = ({
 
       <IonContent className="ion-padding modal-content">
         <div className="preview-details">
-          <h2>Restaurant Name: {orderDetails.restaurantName}</h2>
+          <h2>Restaurant Name: {orderDetails?.restName}</h2>
           <p>
-            <strong>Delivery Commission:</strong> {orderDetails.deliveryCommission}
+            <strong>Delivery Commission:</strong> {orderDetails?.totalAmount}
           </p>
           <p>
-            <strong>Payment Type:</strong> {orderDetails.paymentType}
+            <strong>Payment Type:</strong> {orderDetails?.totalAmount}
           </p>
           <h3>Order Details:</h3>
           <ul>
-            {orderDetails.items.map((item, index) => (
+            {orderDetails?.breakdown?.map((item, index) => (
               <li key={index} className="item-detail">
                 <span>
-                  <strong>{item.name}</strong> (Qty: {item.quantity})
+                  <strong>{item?.item}</strong> (Qty: {item?.qty})
                 </span>
-                <span>₹{(item.price * item.quantity).toFixed(2)}</span>
+                <span>₹{item?.price}</span>
               </li>
             ))}
           </ul>
-          <h3>Total Price: ₹{calculateTotalPrice()}</h3>
+          <h3>Total Price: ₹{orderDetails?.totalAmount}</h3>
         </div>
         <p className="timer">
           Time Left: <strong>{timeLeft} seconds</strong>
         </p>
         <div className="modal-actions">
-          <IonButton color="success" onClick={onAccept}>
+          <IonButton
+            color="success"
+            onClick={() => onAccept("Accept", orderDetails?.orderId)}
+          >
             Accept
           </IonButton>
-          <IonButton color="danger" onClick={onCancel}>
+          <IonButton
+            color="danger"
+            onClick={() => onCancel("Cancel", orderDetails?.orderId)}
+          >
             Cancel
           </IonButton>
         </div>

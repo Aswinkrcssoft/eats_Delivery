@@ -1,17 +1,4 @@
-import {
-  IonButton,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCol,
-  IonIcon,
-  IonInput,
-  IonItem,
-  IonPage,
-  IonRow,
-  useIonToast,
-} from '@ionic/react';
+import {IonButton,IonCard,IonCardContent,IonCardHeader,IonCardSubtitle,IonCol,IonIcon,IonInput,IonItem,IonPage,IonRow,useIonToast,} from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { eyeOffOutline, eyeOutline, key, person } from 'ionicons/icons';
@@ -19,37 +6,24 @@ import { encryptText, decryptText } from '../../components/utils/encryptionUtil'
 import './Login.css';
 import { setName, checkName, removeName } from '../../components/utils/preferencesUtil'; 
 
-
 interface LoginProps {
   onLoginSuccess: () => void;  // Prop to notify the parent that login was successful
-}
-
-
-interface LoginUser {
-  user_id:string,
-  login_first:string
 }
 //function Login() {
   const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [responseData, setResponseData] = useState<LoginUser | null>(null);
-
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
   const [firstlogin, setFirstlogin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-
   const [showConPassword1, setShowConPassword1] = useState(false);
   const [showConPassword2, setShowConPassword2] = useState(false);
   const [activeInput, setActiveInput] = useState('');
   const [isSessionError, setIsSessionError] = useState(false);
   const [present] = useIonToast();
-  const appName = "Eats"
-  //process.env.REACT_APP_APP_NAME;
-
   useEffect(() => {
     // Implement any necessary setup here
   }, []);
@@ -60,8 +34,7 @@ interface LoginUser {
 
     if (username === '' || password === '') {
       setLoading(false);
-      present({
-        message: 'Please enter username and password',
+      present({ message: 'Please enter username and password',
         duration: 4000,
         position: 'bottom',
         cssClass: 'text-white',
@@ -272,14 +245,19 @@ interface LoginUser {
               backgroundColor: 'var(--ion-color-primary-light)',
             }}
           >
+            
+
+        
             <img
-              src={`/assets/icon/eat.png`}
-              width="240px"
-              height="100px"
+              src={`/assets/icon/Eats1.jpeg`}
+              width="200px"
+              height="160px"
               alt="Logo"
+              
             />
+                <br></br>
             <IonCardSubtitle
-              style={{ fontWeight: 'bold', marginTop: '-20px' }}
+              style={{ fontWeight: 'bold', marginTop: '-2px' }}
               color="var(--ion-color-primary)"
               className="ion-text-center ion-text-capitalize"
             >
